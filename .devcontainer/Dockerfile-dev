@@ -1,7 +1,7 @@
 FROM node:14.15-alpine As builder
 
 # https://code.visualstudio.com/docs/remote/devcontainer-cli
-# $devcontainer build
+# for $devcontainer build
 ARG vscode
 RUN if [[ -z "$vscode" ]] ; then printf "\nERROR: This Dockerfile needs to be built with VS Code !" && exit 1; else printf "VS Code is detected: $vscode"; fi
 
