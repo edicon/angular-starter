@@ -1,5 +1,10 @@
 FROM node:14.15-alpine As builder
 
+# https://code.visualstudio.com/docs/remote/devcontainer-cli
+# $devcontainer build
+ARG vscode
+RUN if [[ -z "$vscode" ]] ; then printf "\nERROR: This Dockerfile needs to be built with VS Code !" && exit 1; else printf "VS Code is detected: $vscode"; fi
+
 WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
@@ -11,15 +16,6 @@ COPY . .
 # "RUN npm run start"가 exit할 때가지 Docker Image가 생성되지 않는다.
 # 그래서, devcontainer에서 "postStartCommand": "npm start"로 실행해야 한다
 # RUN npm run start
-
-# Install global ng-cli if you need
-# RUN su node -c "npm install -g @angular/cli npm"
-
-# or if package.json already has ng-cli as dev-tools
-# set path to use node_modules/.bin/ng
-# ENV PATH="./node_modules/.bin:$PATH"
-
-# RUN ng build --prod # instead of RUN npm run build --prod
 
 # RUN npm run build --prod
 

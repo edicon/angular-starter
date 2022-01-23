@@ -4,9 +4,16 @@
 	"name": "Existing Dockerfile",
 
 	// Sets the run context to one level up instead of the .devcontainer folder.
-	"context": "..",
 	// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
-	"dockerFile": "./Dockerfile-dev",
+  "build": {
+    "context": "..",
+    "dockerfile": "./Dockerfile-dev",
+    "args": {
+        // set vscode arg for Dockerfile-dev
+        "vscode": "true"
+    },
+  },
+	// "dockerFile": "./Dockerfile-dev",
 
   // "initializeCommand": "npm install",
   "postStartCommand": "npm start",
