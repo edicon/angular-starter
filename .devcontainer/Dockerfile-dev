@@ -12,6 +12,15 @@ COPY . .
 # 그래서, devcontainer에서 "postStartCommand": "npm start"로 실행해야 한다
 # RUN npm run start
 
+# Install global ng-cli if you need
+# RUN su node -c "npm install -g @angular/cli npm"
+
+# or if package.json already has ng-cli as dev-tools
+# set path to use node_modules/.bin/ng
+# ENV PATH="./node_modules/.bin:$PATH"
+
+# RUN ng build --prod # instead of RUN npm run build --prod
+
 # RUN npm run build --prod
 
 # FROM nginx:1.15.8-alpine
