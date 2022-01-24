@@ -8,17 +8,35 @@ RUN if [[ -z "$vscode" ]] ; then printf "\nERROR: This Dockerfile needs to be bu
 WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
-
 RUN npm install
 
 COPY . .
 
+# 참고: START -------
+
+# 1. Install global ng-cli
+# RUN su node -c "npm install -g @angular/cli"
+
+# or Set PATH to use node_modules/.bin/ng
+# ENV PATH="./node_modules/.bin:$PATH
+
+# RUN ng build --prod # instead of RUN npm run build --pro
+
+# 2. Install chrome for testing
+# RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+# RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+# RUN apt-get update && apt-get install -y google-chrome-stable
+
+# 참고: END ----------
+
+# ERROR:
 # "RUN npm run start"가 exit할 때가지 Docker Image가 생성되지 않는다.
 # 그래서, devcontainer에서 "postStartCommand": "npm start"로 실행해야 한다
 # RUN npm run start
 
+# BUILD
 # RUN npm run build --prod
 
+# DEPLOY
 # FROM nginx:1.15.8-alpine
-
 # COPY --from=builder /usr/src/app/dist/angular-starter/ /usr/share/nginx/html
