@@ -29,7 +29,7 @@ COPY . .
 
 # 참고: END ----------
 
-# ERROR:
+# RUN: ERROR
 # "RUN npm run start"가 exit할 때가지 Docker Image가 생성되지 않는다.
 # 그래서, devcontainer에서 "postStartCommand": "npm start"로 실행해야 한다
 # RUN npm run start
