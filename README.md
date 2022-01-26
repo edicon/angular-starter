@@ -51,6 +51,10 @@ $ npm run start
 # Open in browser: http://localhost:4200
 ```
 
+## Devcontainer 
+- Add .devcontainer for VScode
+
+
 ## Docker Deployment
 
 ```bash
